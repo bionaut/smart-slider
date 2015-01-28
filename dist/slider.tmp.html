@@ -1,0 +1,18 @@
+
+<div class="slider-wrapper">
+  <div ng-click="subtract(step)" class="subtract"></div>
+  <div detect-click="detect-click" class="bar-wrapper">
+    <div ng-style="{width:getPercentage(model)}" class="active-bar"></div>
+    <div smart-handle="smart-handle" ng-style="{left:getPercentage(model)}" class="handle">
+      <div ng-show="showTooltip" class="handletooltip">{{showTooltip}}</div>
+    </div>
+    <div ng-if="breakpoints" class="breakpoints">
+      <div ng-repeat="breakpoint in breakpoints" ng-style="{left:getPercentage(breakpoint)}" stop-propagation="stop-propagation" ng-click="goTo(breakpoint)" class="breakpoint">{{breakpoint}}</div>
+    </div>
+    <div ng-if="limits" class="limits">
+      <div ng-repeat="limit in limits" ng-style="{left:getPercentage(limit)}" class="limit">{{limit}}</div>
+    </div>
+  </div>
+  <div ng-click="add(step)" class="add"></div>
+  <input type="text" step="{{step}}" min="{{min}}" max="{{max}}" ng-model="model" ng-model-options="{debounce: 500}" class="amountInput"/>
+</div>

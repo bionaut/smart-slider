@@ -1,0 +1,16 @@
+doctype
+html
+	head
+		meta(charset='utf-8')
+		title DEMO
+		meta(name='viewport', content='width=device-width,initial-scale=1')
+		link(rel="stylesheet", type="text/css", href="slider.css")
+	body(ng-app ="smartSlider.module")
+
+		.test(style="background: rgb({{r}},{{g}},{{b}}); width: 100px; height: 100px")
+		smart-slider(min="0", max="255", step="5", model="r", sections="5")
+		smart-slider(min="0", max="255", step="5", model="g", sections="5")
+		smart-slider(min="0", max="255", step="5", model="b", sections="5")
+
+		script(src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js")
+		script(type="text/javascript", src="slider.js")

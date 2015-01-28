@@ -1,0 +1,35 @@
+.slider-wrapper
+	//- minus button
+	.subtract(ng-click = "subtract(step)")
+	
+	//- slider bar with active area
+	.bar-wrapper(detect-click)
+		.active-bar(ng-style="{width:getPercentage(model)}")
+		
+		//- handle
+		.handle(smart-handle ,ng-style="{left:getPercentage(model)}" )
+			.handletooltip(ng-show="showTooltip") {{showTooltip}}
+
+		//- optional sections
+		.breakpoints(ng-if="breakpoints")
+			.breakpoint(ng-repeat="breakpoint in breakpoints",
+						ng-style="{left:getPercentage(breakpoint)}",
+						stop-propagation,
+						ng-click = "goTo(breakpoint)"){{breakpoint}}
+
+		//- optional limits
+		.limits(ng-if="limits")
+			.limit(ng-repeat="limit in limits",
+					ng-style="{left:getPercentage(limit)}")
+					{{limit}}
+
+	//- add value button
+	.add(ng-click = "add(step)")
+	
+	//- manual input field
+	input.amountInput(type="text",
+		  			  step="{{step}}",
+		  			  min="{{min}}",
+		  			  max="{{max}}",
+		  			  ng-model="model",
+		  			  ng-model-options="{debounce: 500}")
